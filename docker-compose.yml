@@ -8,6 +8,4 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
-    environment:
-      - NODE_ENV=production
-    command: sh -c "npm run build && npm run preview -- --port 5173 --host"
+    command: sh -c "npm run build && npm run dev"
