@@ -2,5 +2,5 @@
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  base: '/blog/', // très important !
+  base: '/blog/',
 })
