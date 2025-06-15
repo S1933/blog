@@ -2,6 +2,9 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   server: {
-    allowedHosts: ['blog.s1933.ovh'],
+    allowedHosts: true,
+  },
+  preview: {
+    allowedHosts: true,
   },
 });
