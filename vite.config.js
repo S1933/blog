@@ -1,10 +1,8 @@
-import { defineConfig } from 'vite';
+// vite.config.js
+import { defineConfig } from 'vite'
 
 export default defineConfig({
-  server: {
-    allowedHosts: true,
-  },
   preview: {
-    allowedHosts: true,
-  },
-});
+    allowedHosts: ['blog.s1933.ovh']
+  }
+})
