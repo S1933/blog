@@ -1,0 +1,55 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const posts = await Astro.glob('./*.md');
+posts.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+---
+
+<Layout title="Blog Posts">
+  <h1>All Blog Posts</h1>
+
+  <div class="posts">
+    {posts.map(post => (
+      <article class="post-card">
+        <h2><a href={post.url}>{post.frontmatter.title}</a></h2>
+        <div class="meta">
+          <span class="author">By {post.frontmatter.author}</span>
+          <span class="date">{new Date(post.frontmatter.date).toLocaleDateString()}</span>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <style>
+    .posts {
+      display: grid;
+      gap: 2rem;
+    }
+    .post-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .post-card h2 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+    .post-card a {
+      color: var(--accent-dark);
+      text-decoration: none;
+    }
+    .post-card a:hover {
+      text-decoration: underline;
+    }
+    .meta {
+      margin-top: 0.5rem;
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+    .meta span:not(:last-child)::after {
+      content: "•";
+      margin: 0 0.5rem;
+    }
+  </style>
+</Layout>
